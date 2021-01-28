@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center center" >
+    <mat-tab-group fxLayout="column" fxLayoutAlign="space-between center" >
+        <mat-tab label="libros" class="title" fxLayout="row" >
+            <div *ngFor="let book of books| async" class="List-group-item col-lg-4 card" style="width: 19rem;">
+                <div class="card-body" fxLayout="column" >
+                    <h4 class="card-title" fxLayoutAlign="center center" >{{book.name}}</h4>
+                    <p class="card-text" >{{book.author}}</p>
+                    <p class="card-text" >{{book.content}}</p>
+                </div>
+            </div>
+            
+        </mat-tab>
+        <mat-tab label="Crear libros" fxLayoutAlign="center center">
+            <div class="List-group-item col-lg-4 card" style="width: 19rem;" >
+                
+                <Form  fxLayout="column" >
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                    <div>
+                    <input [(ngModel)]="createBook.name" type="text" placeholder="Ingresar el nombre del libro">
+                    </div>
+                    <div>
+                    <input [(ngModel)]="createBook.author" type="text" placeholder="Ingresar el autor">
+                    </div>
+                    <div>
+                    <input [(ngModel)]="createBook.content" type="text" placeholder="Ingresar el contenido">
+                    </div>
+                    <div>
+                    <button  (click)="createBook()">Crear</button>
+                    </div>
+                </div>
+                </Form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Borrar libros">
+            <div *ngFor="let libro of libros | async" class="List-group-item col-lg-4 card" style="width: 19rem;">
+                <div class="card-body" fxLayout="column" >
+                    <h4 class="card-title" fxLayoutAlign="center center" >{{book.name}}</h4>
+                    <p class="card-text" >{{book.author}}</p>
+                    <p class="card-text" >{{book.content}}</p>
+                    <button  (click)="DeleteBook(book._id)">eliminar
+                    </button>
+                </div>
+            </div>
+        </mat-tab>
+      </mat-tab-group>
+      
+    </div>
